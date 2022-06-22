@@ -17,14 +17,22 @@ export default function App() {
   const [error, setError] = React.useState()
   //String value used to create a controlled input in the FilterInput.jsx component
   const [filterInputValue, setFilterInputValue] = React.useState("")
-
+  const [newTransactionForm, setNewTransactionForm] = React.useState()
+  const [isCreating, setIsCreating] = React.useState()
+  function setNewTransactionForm() { return true }
   return (
     <div className="app">
       <BrowserRouter>
-        <Navbar filterInputValue={filterInputValue} setFilterInputValue={setFilterInputValue}/>
+        <Navbar filterInputValue={filterInputValue} setFilterInputValue={setFilterInputValue} />
         <main>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home transactions={transactions} setTransactions={setTransactions}
+              transfers={transfers} setTransfers={setTransfers}
+              error={error} setError={setError}
+              isLoading={isLoading} setIsLoading={setIsLoading}
+              filterInputValue={filterInputValue}
+              newTransactionForm={newTransactionForm} setNewTransactionForm={setNewTransactionForm}
+              isCreating={isCreating} setIsCreating={setIsCreating} />} />
             <Route path="/transactions/:transactionId" element={<TransactionDetail />} />
           </Routes>
 

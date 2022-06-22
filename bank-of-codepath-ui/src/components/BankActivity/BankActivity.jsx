@@ -2,7 +2,7 @@ import * as React from "react"
 import { formatDate, formatAmount } from "../../utils/format"
 import "./BankActivity.css"
 
-export default function BankActivity() {
+export default function BankActivity({transactions}) {
   return (
     <div className="bank-activity">
       <h2>Transactions</h2>
