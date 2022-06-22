@@ -17,9 +17,9 @@ export default function App() {
   const [error, setError] = React.useState()
   //String value used to create a controlled input in the FilterInput.jsx component
   const [filterInputValue, setFilterInputValue] = React.useState("")
-  const [newTransactionForm, setNewTransactionForm] = React.useState()
-  const [isCreating, setIsCreating] = React.useState()
-  function setNewTransactionForm() { return true }
+  const [newTransactionForm, setNewTransactionForm] = React.useState({description:"", category:"",  amount: 0})
+  const [isCreating, setIsCreating] = React.useState(false)
+
   return (
     <div className="app">
       <BrowserRouter>
