@@ -18,7 +18,7 @@ export default function Home({ transactions = [], setTransactions = () => { },
     axios.get("http://localhost:3001/bank/transactions")
       .then((response) => {
         setTransactions(response.data.transactions)
-        console.log(response.data)
+        console.log(response)
         setIsLoading(false)
       })
       .catch((err) => setError(err))
@@ -26,6 +26,7 @@ export default function Home({ transactions = [], setTransactions = () => { },
     axios.get("http://localhost:3001/bank/transfers")
       .then((response) => {
         setTransfers(response.data.transfers)
+        console.log(response.data)
         setIsLoading(false)
       })
       .catch((err) => setError(err))
@@ -34,12 +35,13 @@ export default function Home({ transactions = [], setTransactions = () => { },
   async function handleOnSubmitNewTransaction() {
     setIsCreating(true)
     console.log("Hello")
-    axios.post("http://localhost:3001/bank/transactions", newTransactionForm)
+    axios.post("http://localhost:3001/bank/transactions", {"transaction" : {...newTransactionForm}})
       .then((response) => {
         console.log(newTransactionForm)
         console.log(response)
         setTransactions([...transactions, response.data.transaction])
         console.log(transactions)
+        setNewTransactionForm({description:"", category:"",  amount: 0})
         setIsCreating(false)
       }
       )
